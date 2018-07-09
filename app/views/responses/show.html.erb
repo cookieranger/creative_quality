@@ -13,6 +13,29 @@
         of
         <%= Question.count %>
         questions
+        <hr/>
+
+        <div>
+          <b>Purpose</b>
+          <ul>
+            <li>Raw score <%= @response.total_raw_score('Purpose') %></li>
+            <li>Max score <%= @response.total_max_score('Purpose') %></li>
+          </ul>
+        </div>
+        <div>
+          <b>Empowerment</b>
+          <ul>
+            <li>Raw score <%= @response.total_raw_score('Empowerment') %></li>
+            <li>Max score <%= @response.total_max_score('Empowerment') %></li>
+          </ul>
+        </div>
+        <div>
+          <b>Collaboration</b>
+          <ul>
+            <li>Raw score <%= @response.total_raw_score('Collaboration') %></li>
+            <li>Max score <%= @response.total_max_score('Collaboration') %></li>
+          </ul>
+        </div>
       </div>
     </div>
 

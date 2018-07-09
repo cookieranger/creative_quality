@@ -14,4 +14,8 @@ class CreativeQuality < ApplicationRecord
   has_many :question_choices
 
   validates :name, :description, :color, presence: true
+
+  def self.all_names
+    all.map(&:name).uniq
+  end
 end

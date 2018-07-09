@@ -21,5 +21,9 @@ class QuestionResponse < ApplicationRecord
   validates :question_choice, presence: true
   validates :response, presence: true
 
-  delegate :question, :creative_quality, to: :question_choice
+  delegate :question, :creative_quality, :score, to: :question_choice
+
+  def score_by_quality_name(quality_name)
+    quality_name == creative_quality.name ? score : 0
+  end
 end

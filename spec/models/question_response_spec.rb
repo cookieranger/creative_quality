@@ -26,4 +26,25 @@ describe QuestionResponse do
     it { is_expected.to validate_presence_of :question_choice }
     it { is_expected.to validate_presence_of :response }
   end
+
+  context 'score_by_quality_name' do
+    let(:creative_quality_1) { build(:creative_quality, name: 'cq1') }
+    let(:creative_quality_2) { build(:creative_quality, name: 'cq2') }
+    let(:question_choice) {
+      create(
+        :question_choice,
+        creative_quality: creative_quality_1,
+        score: 9
+      )
+    }
+    let!(:question_response) {
+      create(:question_response, question_choice: question_choice )
+    }
+
+    it 'gets the max score of all possible choices' do
+    #   binding.pry
+      expect(question_response.score_by_quality_name(creative_quality_1.name)).to eq 9
+      expect(question_response.score_by_quality_name(creative_quality_2.name)).to eq 0
+    end
+  end
 end

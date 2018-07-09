@@ -15,4 +15,10 @@ class Question < ApplicationRecord
   validates :title, presence: true
 
   accepts_nested_attributes_for(:question_choices)
+
+  def max_score(quality_name)
+    question_choices
+      .with_quality_name(quality_name)
+      .max_by(&:score).try(:score) || 0
+  end
 end

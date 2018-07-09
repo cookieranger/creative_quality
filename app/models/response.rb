@@ -24,4 +24,16 @@ class Response < ApplicationRecord
   def completed?
     question_responses_count == Question.count
   end
+
+  def total_raw_score(quality_name)
+    question_responses.sum do |q_res|
+      q_res.score_by_quality_name(quality_name)
+    end
+  end
+
+  def total_max_score(quality_name)
+    question_responses.sum do |q_res|
+      q_res.question.max_score(quality_name)
+    end
+  end
 end

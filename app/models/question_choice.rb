@@ -23,6 +23,10 @@ class QuestionChoice < ApplicationRecord
   validates :text, :question, :creative_quality, presence: true
   validates :score, numericality: { only_integer: true }
 
+  scope :with_quality_name, ->(quality_name) {
+    joins(:creative_quality).where('creative_qualities.name = ?', quality_name)
+  }
+
   def creative_quality_name
     @creative_quality_name ||= creative_quality.name
   end
