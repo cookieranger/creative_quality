@@ -21,8 +21,11 @@ class CreativeQuality < ApplicationRecord
   end
 
   def final_score
-    calculated = (total_raw_for_quality.to_f / total_max_for_quality) * 100
-    clamp(calculated.to_i, -100, 100)
+    # @final_score ||= 57
+    @final_score ||= clamp(
+      (total_raw_for_quality.to_f / total_max_for_quality * 100).to_i,-100,
+      100
+    )
   end
 
   def total_raw_for_quality

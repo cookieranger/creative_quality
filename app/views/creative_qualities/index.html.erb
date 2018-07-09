@@ -16,21 +16,54 @@
     <div class="row">
       <%= @creative_qualities.find_each do |creative_quality| %>
         <div class="col-md-4">
-          <div class="panel panel-default">
-            <div class="panel-heading">
+          <div class="panel panel-default center light-shadow"
+            style="
+              border-color: <%= creative_quality.color %>;
+              border-width: 3px;
+            "
+          >
+            <div class="panel-heading color-white large-text" style="background: <%= creative_quality.color %>;">
               <%= creative_quality.name %>
             </div>
 
             <div class="panel-body">
+              <div>
+                <img style="width: 120px" src="
+                  <%= asset_path("images/qualityIcons/#{creative_quality.name.downcase}.png") %>
+                "/>
+              </div>
               <p>
-                <%= creative_quality.description %>
+                <strong class="small-text">Your Score: </strong>
+              </p>
+              <p class="jumbo-text bold">
+                <%= creative_quality.final_score %>
               </p>
 
-              <hr>
+              <div class="progress-wrapper relative" style="width: 50%;">
+                <div class="border-dashed"
+                  style="
+                    position: absolute;
+                    top: -13px;
+                    left: 100%;
+                    margin-left: -1px;
+                    height: 30px;
+                    width: 2px;
+                  "
+                ></div>
+                <div style="
+                  margin: 20px 0;
+                  margin-left: <%=
+                    creative_quality.final_score > 0 ? 100 : 100 + creative_quality.final_score
+                  %>%;
+                  height: 4px;
+                  background: <%= creative_quality.color %>;
+                  width: <%= creative_quality.final_score.abs %>%;
+                "></div>
 
-              <p>
-                <strong>Your Score: <%= creative_quality.final_score %></strong>
-              </p>
+              </div>
+              <p class="left-align">
+                <%= creative_quality.description.first(120) %><%= creative_quality.description.length > 120 && '...' %> </p>
+              <div><a>Read More</a></div>
             </div>
           </div>
         </div>

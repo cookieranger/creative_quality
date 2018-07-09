@@ -12,3 +12,47 @@ $red: #e86982;
 .color-red {
   color: $red;
 }
+.color-white {
+  color: white !important;
+}
+.center {
+  text-align: center;
+}
+.left-align {
+  text-align: left;
+}
+
+// text
+.small-text {
+  font-size: 10px;
+}
+.large-text {
+  font-size: 20px;
+}
+.jumbo-text {
+  font-size: 40px;
+}
+.bold {
+  font-weight: bold;
+}
+.uppercase {
+  text-transform: uppercase;
+}
+
+.light-shadow {
+  box-shadow: #ddd 0px 0px 20px 3px;
+}
+
+a,
+a:hover {
+  color: #5ca0da;
+  cursor: pointer;
+}
+
+.border-dashed {
+  border: 1px dashed #888;
+}
+
+.relative {
+  position: relative;
+}
