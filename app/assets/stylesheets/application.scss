@@ -3,3 +3,12 @@
 @import "bootstrap";
 @import "rails_bootstrap_forms";
 @import "bootswatch/flatly/bootswatch";
+
+$green: #90d0ad;
+$red: #e86982;
+.color-green {
+  color: $green;
+}
+.color-red {
+  color: $red;
+}

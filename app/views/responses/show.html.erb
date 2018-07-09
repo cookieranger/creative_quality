@@ -28,6 +28,9 @@
               <% if question_choice == question_response.question_choice %>
                 <strong>
                   <%= question_choice.text %>
+                  <div class="color-<%= question_choice.score > 0 ? 'green' : 'red' %>">
+                    <%= question_choice.creative_quality_name %> <%= question_choice.score %>
+                  </div>
                 </strong>
               <% else %>
                 <span class="text-muted">

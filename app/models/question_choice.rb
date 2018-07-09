@@ -22,4 +22,8 @@ class QuestionChoice < ApplicationRecord
 
   validates :text, :question, :creative_quality, presence: true
   validates :score, numericality: { only_integer: true }
+
+  def creative_quality_name
+    @creative_quality_name ||= creative_quality.name
+  end
 end
