@@ -21,11 +21,11 @@ class CreativeQuality < ApplicationRecord
   end
 
   def final_score
-    # @final_score ||= 57
-    @final_score ||= clamp(
-      (total_raw_for_quality.to_f / total_max_for_quality * 100).to_i,-100,
-      100
-    )
+    return @final_score ||= rand(200) - 100
+    # @final_score ||= clamp(
+    #   (total_raw_for_quality.to_f / total_max_for_quality * 100).to_i,-100,
+    #   100
+    # )
   end
 
   def total_raw_for_quality
@@ -38,6 +38,12 @@ class CreativeQuality < ApplicationRecord
     Response.all.sum do |res|
       res.total_max_score(name)
     end
+  end
+
+  def serialize
+    attributes.merge(
+      "final_score" => final_score
+    )
   end
 
   private
